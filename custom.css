@@ -13,12 +13,28 @@
 
 body {
   background-color: #232931;          /* dark slate */
-  background-image: radial-gradient(circle at 50% 50%, rgb(100 255 218 / 0.08) 0%, transparent 50%);
+  background-image: radial-gradient(circle at 50% 50%, rgb(100 255 218 / 0.04) 0%, transparent 70%);
   background-attachment: fixed;
   color: #e6f1ff;                     /* higher-contrast body text */
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, monospace;
   line-height: 1.7;
   font-size: 18px;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+/* Mobile responsive adjustments */
+@media (width <= 768px) {
+  body {
+    font-size: 16px;
+    padding: 0.75rem 1rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 /* Secondary text (dates, bylines, small) */
@@ -105,9 +121,18 @@ hr { background-color: #4ecca3; height: 1px; border: 0; }
    Tables
 ---------------------------- */
 table {
-  width: -webkit-fill-available;
+  width: 100%;
+  max-width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+  overflow-x: auto;
+  display: block;
+}
+
+@media (width <= 768px) {
+  table {
+    font-size: 14px;
+  }
 }
 thead { background: #393e46; }
 
@@ -127,6 +152,7 @@ tr { border-left: 1px solid #393e46; }
   color: #4ecca3;
   border-radius: 6px;
   padding: 0 .25rem;
+  word-wrap: break-word;
 }
 
 #collection #wrapper pre,
@@ -136,6 +162,15 @@ tr { border-left: 1px solid #393e46; }
   border-radius: 6px;
   padding: 1rem;
   overflow: auto;
+  max-width: 100%;
+}
+
+@media (width <= 768px) {
+  #collection #wrapper pre,
+  #post pre {
+    padding: 0.75rem;
+    font-size: 14px;
+  }
 }
 
 /* ---------------------------
@@ -299,4 +334,27 @@ a[target="_blank"]:hover::after {
 /* Don't show icon on hashtags even if they're external */
 a.hashtag[target="_blank"]::after {
   display: none;
+}
+
+/* ---------------------------
+   Mobile responsive utilities
+---------------------------- */
+@media (width <= 768px) {
+  #blog-title {
+    font-size: 1.5rem;
+  }
+  
+  #blog-title svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .post-preview, .h-entry, .post {
+    padding: 1rem 0;
+  }
+  
+  a[target="_blank"]::after {
+    width: 12px;
+    height: 12px;
+  }
 }
