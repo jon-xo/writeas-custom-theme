@@ -344,6 +344,20 @@ a.hashtag[target="_blank"]::after {
 }
 
 /* ---------------------------
+   Read more link styling
+---------------------------- */
+.read-more, a.read-more, a[href*="read-more"] {
+  color: #64ffda !important;
+  text-decoration: underline !important;
+  font-weight: 600;
+  border-bottom: none !important;
+}
+
+.read-more:hover, a.read-more:hover {
+  color: #b8ffee !important;
+}
+
+/* ---------------------------
    Mobile responsive utilities
 ---------------------------- */
 @media (width <= 768px) {
