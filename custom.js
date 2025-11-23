@@ -170,9 +170,15 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // Initialize search UI
   function initializeSearchUI() {
-    // Create search container if on appropriate page
+    // Only show search on homepage/collection pages, not individual posts
+    const isPost = document.querySelector('article.post') || document.querySelector('.h-entry');
+    if (isPost) return;
+    
     const header = document.querySelector('header');
     if (!header) return;
+    
+    // Check if search container already exists to prevent duplicates
+    if (document.getElementById('search-container')) return;
     
     const searchHTML = `
       <div id="search-container">
