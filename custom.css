@@ -398,3 +398,110 @@ nav ul li a:hover {
     height: 12px;
   }
 }
+
+/* ---------------------------
+   Search Interface
+---------------------------- */
+
+#search-container {
+  margin: 2rem 0 !important;
+  padding: 0 1.5rem !important;
+}
+
+#search-input {
+  width: 100% !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 16px !important;
+  font-family: Inter, system-ui, -apple-system, sans-serif !important;
+  color: #e6f1ff !important;
+  background-color: rgb(30 41 59 / 0.5) !important;
+  border: 2px solid rgb(100 255 218 / 0.2) !important;
+  border-radius: 8px !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+#search-input:focus {
+  border-color: #64ffda !important;
+  background-color: rgb(30 41 59 / 0.8) !important;
+  box-shadow: 0 0 0 3px rgb(100 255 218 / 0.1) !important;
+}
+
+#search-input::placeholder {
+  color: rgb(226 232 240 / 0.5) !important;
+}
+
+#search-results {
+  margin-top: 1.5rem !important;
+}
+
+.search-result {
+  padding: 1.25rem !important;
+  margin-bottom: 1rem !important;
+  background-color: rgb(30 41 59 / 0.3) !important;
+  border: 1px solid rgb(100 255 218 / 0.1) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.search-result:hover {
+  background-color: rgb(30 41 59 / 0.5) !important;
+  border-color: rgb(100 255 218 / 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.search-result h3 {
+  margin: 0 0 0.5rem 0 !important;
+  font-size: 1.25rem !important;
+  line-height: 1.4 !important;
+}
+
+.search-result h3 a {
+  color: #64ffda !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+
+.search-result h3 a:hover {
+  text-decoration: underline !important;
+}
+
+.search-excerpt {
+  color: rgb(226 232 240 / 0.8) !important;
+  margin: 0.5rem 0 !important;
+  line-height: 1.6 !important;
+}
+
+.search-result time {
+  display: block !important;
+  font-size: 0.875rem !important;
+  color: rgb(100 255 218 / 0.6) !important;
+  margin-top: 0.5rem !important;
+}
+
+.search-no-results {
+  padding: 2rem !important;
+  text-align: center !important;
+  color: rgb(226 232 240 / 0.6) !important;
+  font-style: italic !important;
+}
+
+/* Mobile responsive search */
+@media (width <= 768px) {
+  #search-container {
+    padding: 0 1rem !important;
+  }
+  
+  #search-input {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+  }
+  
+  .search-result {
+    padding: 1rem !important;
+  }
+  
+  .search-result h3 {
+    font-size: 1.1rem !important;
+  }
+}

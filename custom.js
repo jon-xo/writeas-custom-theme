@@ -74,3 +74,305 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+// ---------------------------
+// Blog Search with Lunr.js
+// ---------------------------
+
+(function() {
+  'use strict';
+  
+  let searchIndex = null;
+  let posts = [];
+  const POSTS_JSON_URL = 'https://raw.githubusercontent.com/jon-xo/writeas-custom-theme/main/posts.json';
+  
+  // Load Lunr.js from CDN
+  function loadLunr(callback) {
+    if (window.lunr) {
+      callback();
+      return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/lunr@2.3.9/lunr.min.js';
+    script.onload = callback;
+    script.onerror = () => console.error('Failed to load Lunr.js');
+    document.head.appendChild(script);
+  }
+  
+  // Fetch and index posts
+  function initializeSearch() {
+    fetch(POSTS_JSON_URL)
+      .then(response => response.json())
+      .then(data => {
+        posts = data;
+        
+        // Build Lunr index
+        searchIndex = lunr(function() {
+          this.ref('id');
+          this.field('title', { boost: 10 });
+          this.field('content');
+          this.field('excerpt', { boost: 5 });
+          
+          data.forEach(post => this.add(post));
+        });
+        
+        console.log(`Search index loaded with ${posts.length} posts`);
+      })
+      .catch(error => console.error('Failed to load search index:', error));
+  }
+  
+  // Perform search
+  function search(query) {
+    if (!searchIndex || !query.trim()) return [];
+    
+    const results = searchIndex.search(query);
+    return results.map(result => {
+      return posts.find(post => post.id === result.ref);
+    }).filter(Boolean);
+  }
+  
+  // Render search results
+  function renderResults(results, query) {
+    const container = document.getElementById('search-results');
+    if (!container) return;
+    
+    if (results.length === 0) {
+      container.innerHTML = `<div class="search-no-results">No results found for "${escapeHtml(query)}"</div>`;
+      return;
+    }
+    
+    const html = results.map(post => {
+      const excerpt = post.excerpt || post.content.substring(0, 200);
+      return `
+        <article class="search-result">
+          <h3><a href="${escapeHtml(post.url)}">${escapeHtml(post.title)}</a></h3>
+          <p class="search-excerpt">${escapeHtml(excerpt)}...</p>
+          <time datetime="${post.date}">${formatDate(post.date)}</time>
+        </article>
+      `;
+    }).join('');
+    
+    container.innerHTML = html;
+  }
+  
+  // Utility functions
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+  
+  // Initialize search UI
+  function initializeSearchUI() {
+    // Create search container if on appropriate page
+    const header = document.querySelector('header');
+    if (!header) return;
+    
+    const searchHTML = `
+      <div id="search-container">
+        <input 
+          type="search" 
+          id="search-input" 
+          placeholder="Search posts..." 
+          aria-label="Search posts"
+        />
+        <div id="search-results" role="region" aria-live="polite"></div>
+      </div>
+    `;
+    
+    // Insert after header
+    header.insertAdjacentHTML('afterend', searchHTML);
+    
+    // Attach event listener
+    const searchInput = document.getElementById('search-input');
+    let debounceTimer;
+    
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(debounceTimer);
+      const query = e.target.value;
+      
+      if (!query.trim()) {
+        document.getElementById('search-results').innerHTML = '';
+        return;
+      }
+      
+      debounceTimer = setTimeout(() => {
+        const results = search(query);
+        renderResults(results, query);
+      }, 300);
+    });
+    
+    // Clear results on escape
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        document.getElementById('search-results').innerHTML = '';
+      }
+    });
+  }
+  
+  // Initialize on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', () => {
+    loadLunr(() => {
+      initializeSearch();
+      initializeSearchUI();
+    });
+  });
+})();
+
+// ---------------------------
+// Blog Search with Lunr.js
+// ---------------------------
+
+(function() {
+  'use strict';
+  
+  let searchIndex = null;
+  let posts = [];
+  const POSTS_JSON_URL = 'https://raw.githubusercontent.com/jon-xo/writeas-custom-theme/main/posts.json';
+  
+  // Load Lunr.js from CDN
+  function loadLunr(callback) {
+    if (window.lunr) {
+      callback();
+      return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/lunr@2.3.9/lunr.min.js';
+    script.onload = callback;
+    script.onerror = () => console.error('Failed to load Lunr.js');
+    document.head.appendChild(script);
+  }
+  
+  // Fetch and index posts
+  function initializeSearch() {
+    fetch(POSTS_JSON_URL)
+      .then(response => response.json())
+      .then(data => {
+        posts = data;
+        
+        // Build Lunr index
+        searchIndex = lunr(function() {
+          this.ref('id');
+          this.field('title', { boost: 10 });
+          this.field('content');
+          this.field('excerpt', { boost: 5 });
+          
+          data.forEach(post => this.add(post));
+        });
+        
+        console.log(`Search index loaded with ${posts.length} posts`);
+      })
+      .catch(error => console.error('Failed to load search index:', error));
+  }
+  
+  // Perform search
+  function search(query) {
+    if (!searchIndex || !query.trim()) return [];
+    
+    const results = searchIndex.search(query);
+    return results.map(result => {
+      return posts.find(post => post.id === result.ref);
+    }).filter(Boolean);
+  }
+  
+  // Render search results
+  function renderResults(results, query) {
+    const container = document.getElementById('search-results');
+    if (!container) return;
+    
+    if (results.length === 0) {
+      container.innerHTML = `<div class="search-no-results">No results found for "${escapeHtml(query)}"</div>`;
+      return;
+    }
+    
+    const html = results.map(post => {
+      const excerpt = post.excerpt || post.content.substring(0, 200);
+      return `
+        <article class="search-result">
+          <h3><a href="${escapeHtml(post.url)}">${escapeHtml(post.title)}</a></h3>
+          <p class="search-excerpt">${escapeHtml(excerpt)}...</p>
+          <time datetime="${post.date}">${formatDate(post.date)}</time>
+        </article>
+      `;
+    }).join('');
+    
+    container.innerHTML = html;
+  }
+  
+  // Utility functions
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+  
+  // Initialize search UI
+  function initializeSearchUI() {
+    // Create search container if on appropriate page
+    const header = document.querySelector('header');
+    if (!header) return;
+    
+    const searchHTML = `
+      <div id="search-container">
+        <input 
+          type="search" 
+          id="search-input" 
+          placeholder="Search posts..." 
+          aria-label="Search posts"
+        />
+        <div id="search-results" role="region" aria-live="polite"></div>
+      </div>
+    `;
+    
+    // Insert after header
+    header.insertAdjacentHTML('afterend', searchHTML);
+    
+    // Attach event listener
+    const searchInput = document.getElementById('search-input');
+    let debounceTimer;
+    
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(debounceTimer);
+      const query = e.target.value;
+      
+      if (!query.trim()) {
+        document.getElementById('search-results').innerHTML = '';
+        return;
+      }
+      
+      debounceTimer = setTimeout(() => {
+        const results = search(query);
+        renderResults(results, query);
+      }, 300);
+    });
+    
+    // Clear results on escape
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        document.getElementById('search-results').innerHTML = '';
+      }
+    });
+  }
+  
+  // Initialize on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', () => {
+    loadLunr(() => {
+      initializeSearch();
+      initializeSearchUI();
+    });
+  });
+})();
