@@ -51,9 +51,7 @@ body footer { font-family: serif; }
 /* ---------------------------
    Headings
 ---------------------------- */
-h1, h2, h3, h4, h5, h6,
-#post article h1, #post article h2, #post article h3,
-#post article h4, #post article h5, #post article h6 {
+h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
   line-height: 1.25;
   margin-top: 2rem;
@@ -61,12 +59,26 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 800;
 }
 
-/* Preserve your explicit heading hooks */
+/* Write.as-specific heading containers */
+#post article h1, 
+#post article h2, 
+#post article h3,
+#post article h4, 
+#post article h5, 
+#post article h6,
 #post article #title,
-#collection #wrapper h2, #subpage,
-#official-writing h2, #official-writing h3, #official-writing h4,
-#wrapper h2, #wrapper h3, #wrapper h4,
-#wrapper h5#h5-heading, #wrapper h6#h6-heading {
+#collection #wrapper h2, 
+#collection #wrapper h3,
+#collection #wrapper h4,
+#official-writing h2, 
+#official-writing h3, 
+#official-writing h4,
+#wrapper h2, 
+#wrapper h3, 
+#wrapper h4,
+#wrapper h5#h5-heading, 
+#wrapper h6#h6-heading,
+#subpage {
   color: #ffffff;
 }
 
