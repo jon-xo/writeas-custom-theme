@@ -21,24 +21,30 @@ body {
   font-size: 18px;
   max-width: 42rem;
   margin: 0 auto !important;
-  padding: 1rem 1.5rem !important;
+  padding: 0 !important;
 }
 
 /* Force padding on all Write.as container elements */
-#wrapper, #post, #collection, #subpage, article, main {
+#wrapper, #post, #collection, #subpage, article, main, header, nav {
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Additional universal padding fallback */
+* {
+  box-sizing: border-box;
 }
 
 /* Mobile responsive adjustments */
 @media (width <= 768px) {
   body {
     font-size: 16px !important;
-    padding: 0.75rem 1rem !important;
+    padding: 0 !important;
   }
   
   /* Mobile container padding */
-  #wrapper, #post, #collection, #subpage, article, main {
+  #wrapper, #post, #collection, #subpage, article, main, header, nav {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
