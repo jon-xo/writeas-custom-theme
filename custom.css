@@ -358,6 +358,25 @@ a.hashtag[target="_blank"]::after {
 }
 
 /* ---------------------------
+   Menu button styling
+---------------------------- */
+nav#manage ul li a,
+.has-submenu a,
+nav ul li a {
+  color: #64ffda !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+nav#manage ul li a:hover,
+.has-submenu a:hover,
+nav ul li a:hover {
+  color: #b8ffee !important;
+  text-decoration: underline !important;
+}
+
+/* ---------------------------
    Mobile responsive utilities
 ---------------------------- */
 @media (width <= 768px) {
