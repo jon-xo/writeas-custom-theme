@@ -59,29 +59,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
 }
 
-/* Write.as-specific heading containers */
-#post article h1, 
-#post article h2, 
-#post article h3,
-#post article h4, 
-#post article h5, 
-#post article h6,
-#post article #title,
-#collection #wrapper h2, 
-#collection #wrapper h3,
-#collection #wrapper h4,
-#official-writing h2, 
-#official-writing h3, 
-#official-writing h4,
-#wrapper h2, 
-#wrapper h3, 
-#wrapper h4,
-#wrapper h5#h5-heading, 
-#wrapper h6#h6-heading,
-#subpage {
-  color: #ffffff;
-}
-
 /* Remove invalid color from original h1 rule (#24242) */
 h1 { background-color: transparent; }
 
@@ -223,12 +200,12 @@ p a:hover, .post a:hover, #wrapper a:hover {
 ---------------------------- */
 
 /* Header nav text/links */
-body#collection header nav a,
-body#post header nav a,
-body#subpage header nav a,
-body#collection header nav span,
-body#post header nav span,
-body#subpage header nav span {
+#collection header nav a,
+#post header nav a,
+#subpage header nav a,
+#collection header nav span,
+#post header nav span,
+#subpage header nav span {
   color: #c9d6ff !important;
   text-decoration: none;
 }
@@ -240,16 +217,16 @@ body header nav a:focus {
 }
 
 /* Footer nav container + links */
-body#collection footer nav,
-body#post footer nav,
-body#subpage footer nav {
+#collection footer nav,
+#post footer nav,
+#subpage footer nav {
   color: #a8b2d1 !important;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-body#collection footer nav a,
-body#post footer nav a,
-body#subpage footer nav a {
+#collection footer nav a,
+#post footer nav a,
+#subpage footer nav a {
   color: #a8b2d1 !important;
   text-decoration: none;
 }
