@@ -1,0 +1,32 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": [
+          "fill"
+        ]
+      }
+    ],
+    "declaration-no-important": null,
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null,
+    "declaration-block-single-line-max-declarations": null,
+    "value-keyword-case": [
+      "lower",
+      {
+        "ignoreKeywords": [
+          "url"
+        ]
+      }
+    ],
+    "function-url-scheme-allowed-list": [
+      "https",
+      "http",
+      "data"
+    ],
+    "color-hex-length": "long",
+    "alpha-value-notation": "number"
+  }
+}

@@ -7,15 +7,16 @@
 /* ---------------------------
    Type & base
 ---------------------------- */
+
 /* Optional: improve readability; keep monospace for code */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 body {
   background-color: #232931;          /* dark slate */
-  background-image: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.08) 0%, transparent 50%);
+  background-image: radial-gradient(circle at 50% 50%, rgb(100 255 218 / 0.08) 0%, transparent 50%);
   background-attachment: fixed;
   color: #e6f1ff;                     /* higher-contrast body text */
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, monospace;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, monospace;
   line-height: 1.7;
   font-size: 18px;
 }
@@ -96,7 +97,7 @@ hr { background-color: #4ecca3; height: 1px; border: 0; }
 .post-preview, .h-entry, .post {
   padding: 1.2rem 0;
   border-bottom: 1px solid #393e46;                     /* fallback */
-  border-bottom: 1px solid rgba(57,62,70,0.45);         /* subtle divider */
+  border-bottom: 1px solid rgb(57 62 70 / 0.45);         /* subtle divider */
 }
 .post-preview:last-child, .post:last-child { border-bottom: none; }
 
@@ -109,6 +110,7 @@ table {
   border-spacing: 0;
 }
 thead { background: #393e46; }
+
 #wrapper td, td, th, #wrapper th {
   color: #e6f1ff;
   padding-left: 9px; padding-right: 9px;
@@ -126,6 +128,7 @@ tr { border-left: 1px solid #393e46; }
   border-radius: 6px;
   padding: 0 .25rem;
 }
+
 #collection #wrapper pre,
 #post pre {
   background: #2b3340;
@@ -143,7 +146,7 @@ tr { border-left: 1px solid #393e46; }
   padding-left: .9rem;
   color: #d7e3ff;
   background: #232931;                                    /* fallback */
-  background: rgba(35,41,49,0.4);
+  background: rgb(35 41 49 / 0.4);
 }
 
 /* ---------------------------
@@ -156,11 +159,13 @@ tr { border-left: 1px solid #393e46; }
    Link styling (no unknown props)
    - Use a classic underline or border-bottom for emphasis.
 ---------------------------- */
+
 /* Optional: thicker-looking underline without unknown props */
 p a, .post a, #wrapper a {
   text-decoration: none;                 /* turn off default */
   border-bottom: 1px solid #64ffda;      /* create underline */
 }
+
 p a:hover, .post a:hover, #wrapper a:hover {
   border-bottom-color: #b8ffee;
 }
@@ -180,6 +185,7 @@ body#subpage header nav span {
   color: #c9d6ff !important;
   text-decoration: none;
 }
+
 body header nav a:hover,
 body header nav a:focus {
   color: #64ffda !important;
@@ -191,7 +197,7 @@ body#collection footer nav,
 body#post footer nav,
 body#subpage footer nav {
   color: #a8b2d1 !important;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body#collection footer nav a,
@@ -200,6 +206,7 @@ body#subpage footer nav a {
   color: #a8b2d1 !important;
   text-decoration: none;
 }
+
 body footer nav a:hover,
 body footer nav a:focus {
   color: #64ffda !important;
@@ -209,7 +216,7 @@ body footer nav a:focus {
 /* Separator above footer (with fallback before rgba) */
 footer {
   border-top: 1px solid #393e46;                 /* fallback */
-  border-top: 1px solid rgba(57,62,70,0.6);
+  border-top: 1px solid rgb(57 62 70 / 0.6);
   padding-top: 1rem;
   margin-top: 2rem;
 }
@@ -223,20 +230,11 @@ footer nav a.home.pubd {
   opacity: 1 !important;
   text-decoration: none;
 }
+
 footer nav a.home.pubd:hover {
   color: #64ffda !important;
   text-decoration: underline;
 }
-
-/* ---------------------------
-   Keep list dividers (with fallback before rgba)
----------------------------- */
-.post-preview, .h-entry, .post {
-  padding: 1.2rem 0;
-  border-bottom: 1px solid #393e46;             /* fallback */
-  border-bottom: 1px solid rgba(57,62,70,0.45); /* subtle divider */
-}
-.post-preview:last-child, .post:last-child { border-bottom: none; }
 
 /* Keep icon and title aligned and consistent with theme */
 #blog-title svg {
