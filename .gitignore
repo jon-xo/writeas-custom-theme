@@ -10,7 +10,6 @@ backups/
 
 # Node modules (for linting)
 node_modules/
-package-lock.json
 
 # Build artifacts
 .cache/
